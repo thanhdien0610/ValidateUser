@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div>
+        <form action="" class="form">
+            <div class="form-group">
+                <label for="fullname">Nhập tên</label>
+                <input id="fullname" type="text" placeholder="La Dien">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="email">Nhập email</label>
+                <input id="email" type="text" placeholder="LaDien@gmail.com">
+                <span class="form-message"></span>
+            </div>
+            <button class="form-submit">Kiểm tra</button>
+        </form>
+    </div>
+    <script src="./admin.js"></script>
+    <script>
+        Validator({
+            form: '.form',
+            message: '.form-message',
+            rules: [
+                Validator.isRequired('#fullname'),
+                Validator.isEmail('#email')
+            ]
+        })
+    </script>
+</body>
+</html>
