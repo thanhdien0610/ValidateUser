@@ -12,22 +12,22 @@
         <form action="" class="form" id="form-1">
             <div class="form-group">
                 <label for="fullname" class="form-label">Nhập tên</label>
-                <input id="fullname" type="text" placeholder="La Dien" class="form-control">
+                <input id="fullname" type="text" name="fullname" placeholder="La Dien" class="form-control">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="email" class="form-label">Nhập email</label>
-                <input id="email" type="text" placeholder="LaDien@gmail.com" class="form-control">
+                <input id="email" type="text" name="email" placeholder="LaDien@gmail.com" class="form-control">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="password" class="form-label">Nhập mật khẩu</label>
-                <input id="password" type="password" placeholder="nhập password" class="form-control">
+                <input id="password" type="password" name="password" placeholder="nhập password" class="form-control">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
                 <label for="password_confirm" class="form-label">Nhập lại password</label>
-                <input id="password_confirm" type="password" placeholder="nhập lại password" class="form-control">
+                <input id="password_confirm" type="password" name="password_confirm" placeholder="nhập lại password" class="form-control">
                 <span class="form-message"></span>
             </div>
             <button class="form-submit">Kiểm tra</button>
@@ -48,7 +48,10 @@
                 Validator.isConfirm('#password_confirm',function(){
                     return document.querySelector('.form #password').value;
                 },'Mật khẩu nhập lại không chính xác')
-            ]
+            ],
+            onSubmit: function(data){
+                console.log(data) ;
+            }
         })
     </script>
 </body>
