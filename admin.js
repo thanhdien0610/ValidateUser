@@ -8,18 +8,9 @@ function Validator(option) {
 
         var rules = listSelectors[rule.selector];
 
-
-
         for (var i = 0; i < rules.length; ++i) {
-
-
             errorMessage = rules[i](selectorElement.value);
-
-            if (errorMessage) {
-                break;
-            }
-
-
+            if (errorMessage) break; 
         }
 
         if (errorMessage) {
@@ -27,6 +18,8 @@ function Validator(option) {
         } else {
             errorElement.innerText = '';
         }
+
+        return !errorMessage;
     }
 
     var formElement = document.querySelector(option.form);
@@ -36,11 +29,30 @@ function Validator(option) {
 
         formElement.onsubmit = function(e){
             e.preventDefault();
+        
+        var formSubmit = true;
 
             option.rules.forEach(rule => {
                 var selectorElement = formElement.querySelector(rule.selector);
-                validate(selectorElement, rule);
-        })
+                var submitSuccess = validate(selectorElement, rule);
+                if (!submitSuccess){
+                    formSubmit = false;
+                 };
+        });
+
+        if (formSubmit){
+            if (typeof option.onSubmit === 'function'){
+                var enableInputs = formElement.querySelectorAll('[name]');
+                var obj = Array.from(enableInputs).reduce(function(node, value){
+                    node[value.name] = value.value;
+                    return node;
+                },{});
+
+                option.onSubmit(obj);
+            }
+            
+        }
+
     }
 
 
