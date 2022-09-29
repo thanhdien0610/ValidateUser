@@ -9,15 +9,25 @@
 </head>
 <body>
     <div>
-        <form action="" class="form">
+        <form action="" class="form" id="form-1">
             <div class="form-group">
-                <label for="fullname">Nhập tên</label>
-                <input id="fullname" type="text" placeholder="La Dien">
+                <label for="fullname" class="form-label">Nhập tên</label>
+                <input id="fullname" type="text" placeholder="La Dien" class="form-control">
                 <span class="form-message"></span>
             </div>
             <div class="form-group">
-                <label for="email">Nhập email</label>
-                <input id="email" type="text" placeholder="LaDien@gmail.com">
+                <label for="email" class="form-label">Nhập email</label>
+                <input id="email" type="text" placeholder="LaDien@gmail.com" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Nhập mật khẩu</label>
+                <input id="password" type="password" placeholder="nhập password" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="password_confirm" class="form-label">Nhập lại password</label>
+                <input id="password_confirm" type="password" placeholder="nhập lại password" class="form-control">
                 <span class="form-message"></span>
             </div>
             <button class="form-submit">Kiểm tra</button>
@@ -29,8 +39,15 @@
             form: '.form',
             message: '.form-message',
             rules: [
-                Validator.isRequired('#fullname'),
-                Validator.isEmail('#email')
+                Validator.isRequired('#fullname','Vui lòng nhập trường tên'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email'),
+                Validator.isRequired('#password','Vui lòng nhập trường password'),
+                Validator.isPassword('#password',6),
+                Validator.isRequired('#password_confirm'),
+                Validator.isConfirm('#password_confirm',function(){
+                    return document.querySelector('.form #password').value;
+                },'Mật khẩu nhập lại không chính xác')
             ]
         })
     </script>

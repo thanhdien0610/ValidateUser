@@ -4,6 +4,13 @@
     flex-direction: column;
   }
 
+.form-label {
+    font-weight: 700;
+    padding-bottom: 6px;
+    line-height: 1.8rem;
+    font-size: 1.4rem;
+}
+
 .form {
     width: 360px;
     min-height: 100px;
@@ -28,4 +35,19 @@
     font-size: 14px;
     border-radius: 8px;
     cursor: pointer;
+  }
+
+.form-control {
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+  }
+
+.form-message {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    padding: 4px 0 0;
   }
